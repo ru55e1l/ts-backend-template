@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "rootDir": "./",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "baseUrl": "./",
     "paths": {
       "*": ["src/*"]
-    },
-    "rootDir": "./",
-    "outDir": "./dist",
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "target": "ES6",
-    "module": "commonjs"
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
