@@ -1,10 +1,9 @@
 import express, { Request, Response, NextFunction } from "express";
 import bodyParser from "body-parser";
-import { RegisterRoutes } from "./routes"; // Adjust the import path according to where your generated routes are
+import { RegisterRoutes } from "./routes";
 
-// Optional: Import Swagger UI Express to serve the Swagger documentation
 import swaggerUi from "swagger-ui-express";
-import * as swaggerDocument from "../dist/swagger.json"; // Adjust the path to your generated swagger.json
+import * as swaggerDocument from "../dist/swagger.json";
 
 const app = express();
 const port = process.env.PORT || 3000;
