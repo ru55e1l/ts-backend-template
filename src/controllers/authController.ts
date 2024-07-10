@@ -1,20 +1,40 @@
-import { Controller, Route, Get, Tags } from "tsoa";
+/*
+------------------------------------------------------------------------
+DESCRIPTION
 
-@Route("auth")
+Handles login, refresh, etc
+------------------------------------------------------------------------*/
+
+import { Route, Post, Tags, Put } from "tsoa";
+import { LoginResponse } from "../Core/Messages/Responses/Auth/LoginResponse";
+import { BaseController } from "./BaseController";
+import { RefreshRequest } from "../Core/Messages/Requests/Auth/RefreshRequest";
+import { LoginRequest } from "Core/Messages/Requests/Auth/LoginRequest";
+
+@Route("Auth")
 @Tags("Auth")
-export class AuthController extends Controller {
-	@Get("Auth")
-	public async verify(): Promise<number> {
-		return 100;
+export class AuthController extends BaseController {
+	@Post("Login")
+	public async Login(request: LoginRequest): Promise<LoginResponse> {
+		return this.InternalServerError({
+			Success: false,
+			RefreshToken: "Not Implemented",
+		});
 	}
 
-	@Get("Auth5")
-	public async AnotherFunction(): Promise<number[]> {
-		const x: number = 5;
-		let list = [];
-		for (let i = 0; i < x; i++) {
-			list.push(i);
-		}
-		return list;
+	@Put("Refresh")
+	public async Refresh(request: RefreshRequest): Promise<LoginResponse> {
+		return this.InternalServerError({
+			Success: false,
+			RefreshToken: "Not Implemented",
+		});
+	}
+
+	@Post("Register")
+	public async Register(): Promise<LoginResponse> {
+		return this.InternalServerError({
+			Success: false,
+			RefreshToken: "Not Implemented",
+		});
 	}
 }

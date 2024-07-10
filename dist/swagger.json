@@ -6,7 +6,24 @@
 		"parameters": {},
 		"requestBodies": {},
 		"responses": {},
-		"schemas": {},
+		"schemas": {
+			"LoginResponse": {
+				"properties": {
+					"Success": {
+						"type": "boolean"
+					},
+					"RefreshToken": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"Success",
+					"RefreshToken"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
 		"securitySchemes": {}
 	},
 	"info": {
@@ -18,111 +35,16 @@
 		"contact": {}
 	},
 	"paths": {
-		"/group/{groupId}": {
-			"get": {
-				"operationId": "GetGroup",
+		"/Auth/Login": {
+			"post": {
+				"operationId": "Login",
 				"responses": {
 					"200": {
 						"description": "Ok",
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "number",
-									"format": "double"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "groupId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/group/{groupId}/{userId}": {
-			"get": {
-				"operationId": "GetUser",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "groupId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					},
-					{
-						"in": "path",
-						"name": "userId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
-		"/auth/Auth": {
-			"get": {
-				"operationId": "Verify",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "number",
-									"format": "double"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Auth"
-				],
-				"security": [],
-				"parameters": []
-			}
-		},
-		"/auth/Auth5": {
-			"get": {
-				"operationId": "AnotherFunction",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"items": {
-										"type": "number",
-										"format": "double"
-									},
-									"type": "array"
+									"$ref": "#/components/schemas/LoginResponse"
 								}
 							}
 						}

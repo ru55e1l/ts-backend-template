@@ -1,7 +1,7 @@
 {
-    "entryFile": "src/server.ts",
+    "entryFile": "src/Server.ts",
     "noImplicitAdditionalProperties": "throw-on-extras",
-    "controllerPathGlobs": ["src/controllers/**/*Controller.ts"],
+    "controllerPathGlobs": ["src/Controllers/**/*Controller.ts"],
     "spec": {
       "outputDirectory": "dist",
       "specVersion": 3
