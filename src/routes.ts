@@ -27,7 +27,7 @@ export function RegisterRoutes(app: Router) {
             ...(fetchMiddlewares<RequestHandler>(GroupController)),
             ...(fetchMiddlewares<RequestHandler>(GroupController.prototype.getGroup)),
 
-            function GroupController_getGroup(request: ExRequest, response: ExResponse, next: any) {
+            async function GroupController_getGroup(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
                     groupId: {"in":"path","name":"groupId","required":true,"dataType":"double"},
             };
@@ -40,7 +40,7 @@ export function RegisterRoutes(app: Router) {
 
                 const controller = new GroupController();
 
-              templateService.apiHandler({
+              await templateService.apiHandler({
                 methodName: 'getGroup',
                 controller,
                 response,
@@ -57,7 +57,7 @@ export function RegisterRoutes(app: Router) {
             ...(fetchMiddlewares<RequestHandler>(GroupController)),
             ...(fetchMiddlewares<RequestHandler>(GroupController.prototype.getUser)),
 
-            function GroupController_getUser(request: ExRequest, response: ExResponse, next: any) {
+            async function GroupController_getUser(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
                     groupId: {"in":"path","name":"groupId","required":true,"dataType":"double"},
                     userId: {"in":"path","name":"userId","required":true,"dataType":"double"},
@@ -71,7 +71,7 @@ export function RegisterRoutes(app: Router) {
 
                 const controller = new GroupController();
 
-              templateService.apiHandler({
+              await templateService.apiHandler({
                 methodName: 'getUser',
                 controller,
                 response,
@@ -88,7 +88,7 @@ export function RegisterRoutes(app: Router) {
             ...(fetchMiddlewares<RequestHandler>(AuthController)),
             ...(fetchMiddlewares<RequestHandler>(AuthController.prototype.verify)),
 
-            function AuthController_verify(request: ExRequest, response: ExResponse, next: any) {
+            async function AuthController_verify(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
             };
 
@@ -100,8 +100,37 @@ export function RegisterRoutes(app: Router) {
 
                 const controller = new AuthController();
 
-              templateService.apiHandler({
+              await templateService.apiHandler({
                 methodName: 'verify',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/auth/Auth5',
+            ...(fetchMiddlewares<RequestHandler>(AuthController)),
+            ...(fetchMiddlewares<RequestHandler>(AuthController.prototype.AnotherFunction)),
+
+            async function AuthController_AnotherFunction(request: ExRequest, response: ExResponse, next: any) {
+            const args: Record<string, TsoaRoute.ParameterSchema> = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args, request, response });
+
+                const controller = new AuthController();
+
+              await templateService.apiHandler({
+                methodName: 'AnotherFunction',
                 controller,
                 response,
                 next,

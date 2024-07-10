@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run Dev Script",
+      "runtimeExecutable": "nodemon",
+      "runtimeArgs": [
+        "--inspect",
+        "--watch", "src",
+        "--ext", "ts",
+        "--ignore", "src/routes.ts",
+        "--ignore", "dist/swagger.json",
+        "--exec", "npx tsoa spec-and-routes && ts-node src/server.ts"
+      ],
+      "port": 1337,
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Dev Script",
+      "port": 1337,
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}
